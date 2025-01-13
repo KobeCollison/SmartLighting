@@ -1,23 +1,32 @@
 import logo from './logo.svg';
 import './App.css';
+import './EditColorAnimation.css';
+import {StyleSelect,EditColorMenu} from './EditColorAnimation';
+import ColorAnimation from './ColorAnimation';
+import React, { useEffect, useState }  from 'react';
+import {PostSender,NodePicker} from './web_com';
 
 function App() {
+  const [message, setMessage] = useState('');
+
+  const ws = new WebSocket("wss://ws.kclight")
+
+
+  // const colorPreview = new ColorAnimation();
   return (
-    <div className="App">
+    <div className="App"> 
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        {/* <NodePicker></NodePicker> */}
+        {/* <PostSender></PostSender> */}
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          {/* <div><StyleSelect /></div>  */}
+          {/* Edit <code>src/App.js</code> and save to reload.<br/> */}
+          <EditColorMenu />
+
+          {/* {colorPreview.previewBlock()} */}
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
+      
     </div>
   );
 }
